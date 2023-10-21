@@ -1,0 +1,289 @@
+[gd_scene load_steps=26 format=3 uid="uid://b7s2asc31utfk"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_hm3ww"]
+[ext_resource type="FontFile" uid="uid://c7tdreja5ahko" path="res://Minecraftia-Regular.ttf" id="2_8lr2q"]
+[ext_resource type="Script" path="res://ParallaxBackground.gd" id="2_134ih"]
+[ext_resource type="Texture2D" uid="uid://bbwbf763tihu2" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer06_sky.png" id="3_qlihp"]
+[ext_resource type="Texture2D" uid="uid://bhw543xifxyj7" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer05_rocks.png" id="4_1no6t"]
+[ext_resource type="Script" path="res://Button.gd" id="4_d3nui"]
+[ext_resource type="Texture2D" uid="uid://oabplpc7f6ne" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer04_clouds.png" id="5_wraj8"]
+[ext_resource type="Texture2D" uid="uid://dnpo55b23hly6" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer03_trees.png" id="6_dxx30"]
+[ext_resource type="Texture2D" uid="uid://du0gnjn3f6x4r" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer02_cake.png" id="7_3skhq"]
+[ext_resource type="Texture2D" uid="uid://eb46qtjjj7ks" path="res://Parallax-2D-Backgrounds/platformer_background_1/Layers/layer01_ground.png" id="8_o24da"]
+[ext_resource type="Script" path="res://music.gd" id="10_4huvg"]
+[ext_resource type="AudioStream" uid="uid://i3xi0cmyhkvx" path="res://musics/2.mp3" id="11_6t7j0"]
+[ext_resource type="AudioStream" uid="uid://dtv8t6jb1aywi" path="res://musics/click.wav" id="11_xilt2"]
+[ext_resource type="Script" path="res://store_button.gd" id="13_bidtr"]
+[ext_resource type="Texture2D" uid="uid://dwvgv2g36sqc4" path="res://free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="13_v74rk"]
+[ext_resource type="Script" path="res://shop_list.gd" id="14_86ywv"]
+[ext_resource type="Texture2D" uid="uid://cxc5dclcoxl32" path="res://free-pixel-art-tiny-hero-sprites/2 Owlet_Monster/Owlet_Monster.png" id="14_b5iru"]
+[ext_resource type="Texture2D" uid="uid://dw3nfhuaoxgb5" path="res://free-pixel-art-tiny-hero-sprites/3 Dude_Monster/Dude_Monster.png" id="15_1vxxr"]
+[ext_resource type="Script" path="res://buy_button.gd" id="15_jg3xv"]
+[ext_resource type="Script" path="res://buy_button2.gd" id="17_u6k6x"]
+[ext_resource type="Script" path="res://exit_from_store_Button.gd" id="17_wdtb8"]
+[ext_resource type="Script" path="res://buy_button3.gd" id="19_jklck"]
+
+[sub_resource type="Animation" id="Animation_h2uu6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_abbuy"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcu2m"]
+_data = {
+"RESET": SubResource("Animation_h2uu6"),
+"fade": SubResource("Animation_abbuy")
+}
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_hm3ww")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_134ih")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer06Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.655)
+texture = ExtResource("3_qlihp")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer05Rocks" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("4_1no6t")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer04Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("5_wraj8")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer03Trees" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("6_dxx30")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer02Cake" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("7_3skhq")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1148.47, 0)
+
+[node name="Layer01Ground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2(576, 326.5)
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("8_o24da")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 1214.0
+offset_bottom = 751.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_fcu2m")
+}
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6t7j0")
+autoplay = true
+script = ExtResource("10_4huvg")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 332.0
+offset_top = 88.0
+offset_right = 841.0
+offset_bottom = 524.0
+
+[node name="start_button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 37.0
+offset_right = 456.0
+offset_bottom = 129.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 48
+text = "play"
+script = ExtResource("4_d3nui")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="Panel/start_button"]
+process_mode = 3
+stream = ExtResource("11_xilt2")
+
+[node name="store_button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 159.0
+offset_right = 456.0
+offset_bottom = 251.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 48
+text = "store
+"
+script = ExtResource("13_bidtr")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="Panel/store_button"]
+process_mode = 3
+stream = ExtResource("11_xilt2")
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+offset_left = 331.0
+offset_top = 87.0
+offset_right = 840.0
+offset_bottom = 526.0
+script = ExtResource("14_86ywv")
+
+[node name="PinkMonster2" type="Sprite2D" parent="ItemList"]
+position = Vector2(54, 57)
+scale = Vector2(5, 5)
+texture = ExtResource("13_v74rk")
+
+[node name="buy_button" type="Button" parent="ItemList/PinkMonster2"]
+offset_left = 25.0
+offset_top = 6.2
+offset_right = 399.0
+offset_bottom = 98.2
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 48
+text = "select"
+script = ExtResource("15_jg3xv")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="ItemList/PinkMonster2/buy_button"]
+process_mode = 3
+stream = ExtResource("11_xilt2")
+
+[node name="OwletMonster" type="Sprite2D" parent="ItemList"]
+position = Vector2(54, 205)
+scale = Vector2(5, 5)
+texture = ExtResource("14_b5iru")
+
+[node name="buy_button2" type="Button" parent="ItemList/OwletMonster"]
+offset_left = 25.0
+offset_top = 7.4
+offset_right = 399.0
+offset_bottom = 99.4
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 48
+text = "select"
+script = ExtResource("17_u6k6x")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="ItemList/OwletMonster/buy_button2"]
+process_mode = 3
+stream = ExtResource("11_xilt2")
+
+[node name="Label" type="Label" parent="ItemList/OwletMonster"]
+offset_left = 15.0
+offset_top = -3.0
+offset_right = 1565.0
+offset_bottom = 140.0
+scale = Vector2(0.05, 0.05)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 80
+text = "unlocks at record 1500"
+
+[node name="DudeMonster" type="Sprite2D" parent="ItemList"]
+position = Vector2(54, 347)
+scale = Vector2(5, 5)
+texture = ExtResource("15_1vxxr")
+
+[node name="buy_button3" type="Button" parent="ItemList/DudeMonster"]
+offset_left = 25.0
+offset_top = 5.4
+offset_right = 399.0
+offset_bottom = 97.4
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 48
+text = "select"
+script = ExtResource("19_jklck")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="ItemList/DudeMonster/buy_button3"]
+process_mode = 3
+stream = ExtResource("11_xilt2")
+
+[node name="Label2" type="Label" parent="ItemList/DudeMonster"]
+offset_left = 15.0
+offset_top = -3.4
+offset_right = 1565.0
+offset_bottom = 139.6
+scale = Vector2(0.05, 0.05)
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 80
+text = "unlocks at record 2000"
+
+[node name="exit_from_store_Button" type="Button" parent="ItemList"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 1.0
+offset_right = 509.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_8lr2q")
+theme_override_font_sizes/font_size = 24
+text = "close"
+script = ExtResource("17_wdtb8")
+
+[connection signal="finished" from="music" to="music" method="_on_finished"]
+[connection signal="pressed" from="Panel/start_button" to="Panel/start_button" method="_on_pressed"]
+[connection signal="pressed" from="Panel/store_button" to="Panel/store_button" method="_on_pressed"]
+[connection signal="pressed" from="ItemList/PinkMonster2/buy_button" to="ItemList/PinkMonster2/buy_button" method="_on_pressed"]
+[connection signal="pressed" from="ItemList/OwletMonster/buy_button2" to="ItemList/OwletMonster/buy_button2" method="_on_pressed"]
+[connection signal="pressed" from="ItemList/DudeMonster/buy_button3" to="ItemList/DudeMonster/buy_button3" method="_on_pressed"]
+[connection signal="pressed" from="ItemList/exit_from_store_Button" to="ItemList/exit_from_store_Button" method="_on_pressed"]

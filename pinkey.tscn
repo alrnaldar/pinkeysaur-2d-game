@@ -1,0 +1,134 @@
+[gd_scene load_steps=21 format=3 uid="uid://bnierbkcfuwpw"]
+
+[ext_resource type="Script" path="res://pinkey.gd" id="1_7fdkp"]
+[ext_resource type="Texture2D" uid="uid://cda8tron5fftf" path="res://free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Jump_8.png" id="2_tekxt"]
+[ext_resource type="Texture2D" uid="uid://bmfyk5f1hnku4" path="res://free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="3_ag4gv"]
+[ext_resource type="AudioStream" uid="uid://b4rilt2u02ft0" path="res://jump.wav" id="4_bh2k3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pvrsv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcdri"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02l3p"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj4wi"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10mx7"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjd07"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1wd3"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgqbv"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdcke"]
+atlas = ExtResource("2_tekxt")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn4jy"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2tlj"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrmb8"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwnfk"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwmkk"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ig1"]
+atlas = ExtResource("3_ag4gv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfqgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcdri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02l3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj4wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10mx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjd07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1wd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgqbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdcke")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn4jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2tlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrmb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwnfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwmkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3ig1")
+}],
+"loop": false,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="pinkey" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(4, 4)
+script = ExtResource("1_7fdkp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+shape = SubResource("CapsuleShape2D_pvrsv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" groups=["player"]]
+sprite_frames = SubResource("SpriteFrames_bfqgs")
+animation = &"run"
+
+[node name="jump_sound" type="AudioStreamPlayer2D" parent="." groups=["player"]]
+stream = ExtResource("4_bh2k3")
+volume_db = -5.0
